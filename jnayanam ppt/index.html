@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extended Presentation Editor</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Sidebar for listing the slides -->
+    <div class="sidebar">
+      <h3>Slides</h3>
+      <ul id="slideList"></ul> <!-- This will list all the slides -->
+    </div>
+
+    <!-- Main content area with toolbar and canvas -->
+    <div class="main-content">
+      <div class="toolbar">
+        <button onclick="triggerFileUpload()" title="Add Image">
+          <img src="images/add-image.png" alt="Add Image" class="icon">Add Image
+        </button>
+        <button onclick="addTextBox()" title="Add Text">
+          <img src="images/add-text.png" alt="Add Text" class="icon">Add Text
+        </button>
+        <button onclick="addRectangle()" title="Add Rectangle">
+          <img src="images/add-rectangle.png" alt="Add Rectangle" class="icon">Add Rectangle
+        </button>
+        <button onclick="addCircle()" title="Add Circle">
+          <img src="images/add-circle.png" alt="Add Circle" class="icon">Add Circle
+        </button>
+        <button onclick="bringForward()" title="Bring Forward">
+          <img src="images/bring-forward.png" alt="Bring Forward" class="icon">Bring Forward
+        </button>
+        <button onclick="sendBackward()" title="Send Backward">
+          <img src="images/send-backward.png" alt="Send Backward" class="icon">Send Backward
+        </button>
+        <button onclick="deleteObject()" title="Delete">
+          <img src="images/delete.png" alt="Delete" class="icon">Delete
+        </button>
+        <button onclick="saveAsImage('png')" title="Save as PNG">
+          <img src="images/save-png.png" alt="Save as PNG" class="icon">Save as PNG
+        </button>
+        <button onclick="saveAsImage('jpeg')" title="Save as JPEG">
+          <img src="images/save-jpeg.png" alt="Save as JPEG" class="icon">Save as JPEG
+        </button>
+        <button onclick="enterPresentationMode()" title="Enter Presentation Mode">
+          <img src="images/presentation-mode.png" alt="Presentation Mode" class="icon">Presentation Mode
+        </button>
+        <button onclick="addNewSlide()" title="Add Slide">
+          <img src="images/add-slide.png" alt="Add Slide" class="icon">Add Slide
+        </button>
+        <button onclick="goToPreviousSlide()" title="Previous Slide">
+          <img src="images/previous-slide.png" alt="Previous Slide" class="icon">Previous Slide
+        </button>
+        <button onclick="goToNextSlide()" title="Next Slide">
+          <img src="images/next-slide.png" alt="Next Slide" class="icon">Next Slide
+        </button>
+        <button onclick="deleteCurrentSlide()" title="Delete Current Slide">
+          <img src="images/delete-slide.png" alt="Delete Current Slide" class="icon">Delete Current Slide
+        </button>
+        <div>Current Slide: <span id="currentSlideIndex">1</span> / <span id="totalSlides">1</span></div>
+        <div class="text-controls">
+          <label for="fontSize">Font Size:</label>
+          <input type="number" id="fontSize" value="24" min="8" max="100" onchange="changeFontSize()">
+          <label for="fontFamily">Font Family:</label>
+          <select id="fontFamily" onchange="changeFontFamily()">
+            <option value="Arial">Arial</option>
+            <option value="Courier">Courier</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Verdana">Verdana</option>
+          </select>
+          <label for="fontColor">Font Color:</label>
+          <input type="color" id="fontColor" value="#000000" onchange="changeFontColor()">
+        </div>
+        <button onclick="fadeIn()" title="Fade In">
+          <img src="images/fade-in.png" alt="Fade In" class="icon">Fade In
+        </button>
+        <button onclick="fadeOut()" title="Fade Out">
+          <img src="images/fade-out.png" alt="Fade Out" class="icon">Fade Out
+        </button>
+        <input type="file" id="imageLoader" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
+      </div>
+
+      <canvas id="presentationCanvas"></canvas> <!-- Canvas for drawing the slides -->
+    </div>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
